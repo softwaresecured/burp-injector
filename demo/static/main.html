@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+    <script src="static/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+        <h1>Pickle demo</h1>
+        <p>
+            This application sends a python serialized object via a POST request. The object contains a parameter called <code>param7</code> which is vulnerable to command injection.
+        </p>
+        <p>The following scripts can be used within the Injector plugin to decode and endcode the payload</p>
+        <h3>Decode script</h3>
+<pre>
+# decoder script used to decode a region of text from a targeting rule
+import base64
+import pickle
+import json
+from urllib.parse import unquote
+def decode_target( target: str ) -> str:
+    arg2pickle = base64.b64decode(unquote(target))
+    arg2object = pickle.loads(arg2pickle)
+    return json.dumps(arg2object)
+</pre>
+        <h3>Encode script</h3>
+<pre>
+# encoder script used to encode a region of text from a targeting rule after the alteration has been injected
+import base64
+import json
+import pickle
+from urllib.parse import quote
+def encode_target( target: str ) -> str:
+    data = json.loads(target)
+    pickled_data = pickle.dumps(data)
+    return quote(base64.b64encode(pickled_data).decode("utf-8"))
+</pre>
+        <h3>Payload script</h3>
+<pre>
+# payload processing script used to alter a payload prior to injection and encoding
+import json
+def process_payload( payload: str ) -> str:
+    processed_payload = payload
+    json_encoded = json.dumps(payload)
+    if json_encoded is not None and len(json_encoded) > 2:
+        processed_payload= json_encoded[1:-1]
+    return processed_payload
+</pre>
+        <h3>Setup and scan:</h3>
+        <ol>
+            <li>Open BurpSuite and load this page in a browser that is proxied through BurpSuite</li>
+            <li><p>Click the "Send" button below to send a test request</p><p><button type="button" class="btn btn-primary" onclick="sendRequest()">Send test request</button></p></li>
+            <li>Locate the POST request to <code>/pickledemo</code> in your proxy traffic and right click "Extensions" → Injector → "Send to injector" </li>
+            <li>Click the Injector tab</li>
+            <li>Click "New" to create a new rule</li>
+            <li>Set the rule scope to: <code>.*pickledemo.*</code></li>
+            <li>Set the target area regex to: <code>arg2=(.*)&amp;</code></li>
+            <li>Set the targeting method to auto</li>
+            <li>Copy and paste the scripts above into their respective tabs or <a href="static/demo_scripts.py" download="demo_scripts.py">download</a> the scripts and import them by clicking the "Import script" button in the injector extension</li>
+            <li>Click the enable checkbox and save the rule. Your configured rule should look like this: <img src="static/configuredrule.png" /></li>
+            <li>Switch to the Proxy tab and locate the POST request to <code>/pickledemo</code>. Right click "Do active scan"</li>
+            <li>The scanner should detect 1 OS Command Injection vulnerability<img src="static/scan-finding.png"/></li>
+        </ol>
+        <h3>Play with repeater editor:</h3>
+        <ol>
+            <li>Locate the POST request to <code>/pickledemo</code> in your proxy traffic and right click "Send to Repeater"</li>
+            <li>The new Repeater tab will have an Injector subtab where you can interact with the decoded payload and alter it as needed<img src="static/repeater.png"</></li>
+        </ol>
+        <script>
+        function sendRequest() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "/pickledemo");
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("arg1=foo&arg2=gASVpAAAAAAAAAB9lCiMBnBhcmFtMZSMC3BhcmFtMXZhbHVllIwGcGFyYW0ylIwLcGFyYW0ydmFsdWWUjAZwYXJhbTOUjAtwYXJhbTN2YWx1ZZSMBnBhcmFtNJSMC3BhcmFtNHZhbHVllIwGcGFyYW01lE0KGowGcGFyYW03lF2UKIwLYXJyYXl2YWx1ZTGUjAthcnJheXZhbHVlMpSMC2FycmF5dmFsdWUzlGV1Lg%3D%3D&arg3=bar");
+        }
+        </script>
+    </div>
+    </body>
+</html>
