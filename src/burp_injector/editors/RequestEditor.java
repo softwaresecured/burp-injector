@@ -13,6 +13,7 @@ import burp_injector.util.Logger;
 import burp_injector.util.RequestUtil;
 import burp_injector.util.UIUtil;
 
+import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -112,7 +113,7 @@ public class RequestEditor implements ExtensionProvidedHttpRequestEditor, Proper
 
     private void loadRequestContent() {
         if ( currentRule != null ) {
-            Thread targetAreaProcessor = new Thread(
+            SwingUtilities.invokeLater(
                 new Runnable() {
                     public void run() {
                         requestEditorUI.jcmbApplicableRule.setEnabled(false);
@@ -123,7 +124,6 @@ public class RequestEditor implements ExtensionProvidedHttpRequestEditor, Proper
                         requestEditorUI.jcmbApplicableRule.setEnabled(true);
                     }
                 });
-            targetAreaProcessor.start();
         }
     }
 
