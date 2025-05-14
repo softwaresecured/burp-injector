@@ -10,6 +10,7 @@ import burp_injector.model.RulesModel;
 import burp_injector.model.data.InjectorTarget;
 import burp_injector.mvc.AbstractView;
 import burp_injector.ui.PnlRegexTargetEditor;
+import burp_injector.util.Logger;
 import burp_injector.util.UIUtil;
 import javax.swing.*;
 import java.awt.*;
@@ -118,6 +119,8 @@ public class RegexTargetsView extends AbstractView<RegexTargetsControllerEvent, 
                     getModel().resetTarget();
                 }
                 break;
+            default:
+                Logger.log("ERROR", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
         }
     }
 
