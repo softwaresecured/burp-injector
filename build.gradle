@@ -27,7 +27,6 @@ sourceSets {
 dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter:5.8.1"
     implementation "com.fasterxml.jackson.core:jackson-databind:2.18.1"
-    implementation "org.python:jython:2.7.4"
     def montoyaApi = "net.portswigger.burp.extensions:montoya-api:2025.2"
     compileOnly montoyaApi
     testImplementation montoyaApi
