@@ -7,6 +7,7 @@ import burp_injector.model.RulesModel;
 import burp_injector.model.TestRequestModel;
 import burp_injector.mvc.AbstractView;
 import burp_injector.ui.PnlTestRequest;
+import burp_injector.util.Logger;
 import burp_injector.util.UIUtil;
 
 import java.beans.PropertyChangeEvent;
@@ -42,6 +43,8 @@ public class TestRequestView extends AbstractView<TestRequestControllerEvent, Te
                         rulesModel.getTargetAreaValueCaptureGroup(),
                         pnlTestRequest.testRequest);
                 break;
+            default:
+                Logger.log("ERROR", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
         }
     }
 
@@ -55,6 +58,8 @@ public class TestRequestView extends AbstractView<TestRequestControllerEvent, Te
                         rulesModel.getTargetAreaValueCaptureGroup(),
                         pnlTestRequest.testRequest);
                 break;
+            default:
+                Logger.log("ERROR", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
         }
     }
 

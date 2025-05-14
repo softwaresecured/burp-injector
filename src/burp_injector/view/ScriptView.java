@@ -15,6 +15,7 @@ import burp_injector.mvc.AbstractView;
 import burp_injector.targeting.AutoTargeter;
 import burp_injector.ui.PnlScriptOutput;
 import burp_injector.ui.PnlScriptPanel;
+import burp_injector.util.Logger;
 import burp_injector.util.UIUtil;
 
 import javax.swing.*;
@@ -152,7 +153,8 @@ public class ScriptView extends AbstractView<ScriptControllerEvent, ScriptModel,
             case CUSTOM_AUTO_TARGET_VALUE_REGEX_CHANGED:
                 updateTargetHighlighting();
                 break;
-
+            default:
+                Logger.log("ERROR", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
         }
     }
 
@@ -162,6 +164,8 @@ public class ScriptView extends AbstractView<ScriptControllerEvent, ScriptModel,
             case TARGET_REGEX_CHANGED:
                 updateRegexTargetMethodHighlighting();
                 break;
+            default:
+                Logger.log("ERROR", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
         }
     }
 
@@ -187,6 +191,8 @@ public class ScriptView extends AbstractView<ScriptControllerEvent, ScriptModel,
             case REGEX:
                 updateRegexTargetMethodHighlighting();
                 break;
+            default:
+                Logger.log("ERROR", String.format("Unknown targeting method %s",getModel().getRulesModel().getRuleTargetingMethod().name()));
         }
     }
 

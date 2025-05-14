@@ -9,6 +9,7 @@ import burp_injector.mvc.AbstractView;
 import burp_injector.ui.JfrmTestRunnerOutput;
 import burp_injector.ui.PnlInjectorRuleEditor;
 import burp_injector.ui.PnlInjectorRules;
+import burp_injector.util.Logger;
 import burp_injector.util.UIUtil;
 import javax.swing.*;
 import java.awt.*;
@@ -172,6 +173,8 @@ public class RulesView extends AbstractView<RulesControllerEvent, RulesModel, Ru
                 updateTestRunnerOutputStatusMsg();
                 jfrmTestRunnerOutput.jProgressBarTestStatus.setValue((Integer)next);
                 break;
+            default:
+                Logger.log("ERROR", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
         }
     }
 
