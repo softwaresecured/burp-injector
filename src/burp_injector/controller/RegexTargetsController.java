@@ -4,6 +4,7 @@ import burp_injector.enums.EditorState;
 import burp_injector.event.controller.RegexTargetsControllerEvent;
 import burp_injector.model.RegexTargetsModel;
 import burp_injector.mvc.AbstractController;
+import burp_injector.util.Logger;
 import burp_injector.util.UIUtil;
 import java.beans.PropertyChangeEvent;
 
@@ -50,6 +51,8 @@ public class RegexTargetsController  extends AbstractController<RegexTargetsCont
                     getModel().loadTarget(UIUtil.getIdByRowNumber(getModel().getTargetsTableModel(), (Integer) next));
                 }
                 break;
+            default:
+                Logger.log("ERROR", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
         }
     }
 

@@ -108,6 +108,8 @@ public class RulesController extends AbstractController<RulesControllerEvent, Ru
             case CANCEL_TEST:
                 getModel().cancelRuleTest();
                 break;
+            default:
+                Logger.log("ERROR", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
         }
     }
 

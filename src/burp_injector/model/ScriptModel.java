@@ -32,7 +32,6 @@ public class ScriptModel extends AbstractModel<ScriptModelEvent> {
     private PythonRuntime pythonRuntime = PythonRuntime.getInstance();
     private ScriptState scriptState = ScriptState.NOT_RUNNING;
     private ScriptRunner scriptExecutionThread = null;
-    private ArrayList<Integer> lastKeys = new ArrayList<Integer>();
 
     public ScriptModel() {
         super();
