@@ -69,6 +69,18 @@ public class ScriptModel extends AbstractModel<ScriptModelEvent> {
         config.setString(ConfigKey.TEST_PAYLOAD, getPayloadTest());
     }
 
+    public void reset() {
+        lastStdout = null;
+        lastStderr = null;
+        lastExecutionTimeMs = 0;
+        encodeScript = null;
+        decodeScript = null;
+        payloadProcessScript = null;
+        payloadTest = null;
+        emit(ScriptModelEvent.RESET, null, null);
+    }
+
+
     /*
         Getters / Setters
      */

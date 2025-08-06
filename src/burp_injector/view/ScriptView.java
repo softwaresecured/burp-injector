@@ -106,6 +106,14 @@ public class ScriptView extends AbstractView<ScriptControllerEvent, ScriptModel,
                         break;
                 }
                 break;
+            case RESET:
+                pnlScriptOutput.jtxtOutput.setText("");
+                pnlScriptOutput.jlblExecutionTimeMs.setText("0 ms");
+                pnlEncodeScript.script.setText("");
+                pnlDecodeScript.script.setText("");
+                pnlPayloadProcess.script.setText("");
+                pnlScriptOutput.jtxtSamplePayload.setText("");
+                break;
             case SCRIPT_CRITICAL_ERROR:
                 JOptionPane.showMessageDialog(parentComponent, (String) next, "Python runtime not available", JOptionPane.ERROR_MESSAGE);
                 break;
