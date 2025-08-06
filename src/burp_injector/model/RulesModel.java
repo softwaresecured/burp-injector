@@ -426,6 +426,11 @@ public class RulesModel extends AbstractModel<RulesModelEvent> {
             return false;
         }
 
+        if ( getTargetAreaRegex() == null ) {
+            setLastErrorAlert(new ErrorAlert("Cannot save rule",String.format("A rule must a target area regex")));
+            return false;
+        }
+
         if ( getRuleScopeRegex() != null ) {
             if (RegexUtil.getMatchGroupCount(getRuleScopeRegex()) > 0 ) {
                 setLastErrorAlert(new ErrorAlert("Cannot save rule",String.format("A rule scope regex must not have capture groups")));

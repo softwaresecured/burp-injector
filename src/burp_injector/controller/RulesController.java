@@ -50,9 +50,15 @@ public class RulesController extends AbstractController<RulesControllerEvent, Ru
                 else {
                     getModel().loadRule(getModel().getLastRuleId());
                 }
+                if ( getModel().getInjectorRules().isEmpty() ) {
+                    getModel().getScriptModel().reset();
+                }
                 break;
             case DELETE:
                 getModel().deleteRule();
+                if ( getModel().getInjectorRules().isEmpty() ) {
+                    getModel().getScriptModel().reset();
+                }
                 break;
             case SAVE:
                 getModel().saveRule();

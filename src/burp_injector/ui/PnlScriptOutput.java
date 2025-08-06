@@ -32,6 +32,8 @@ public class PnlScriptOutput extends JPanel {
         jRadioButtonStdout.setEnabled(enabled);
         jlblExecutionTimeMs.setEnabled(enabled);
         jbtnExecuteToggle.setEnabled(enabled);
+        jbtnExportScripts.setEnabled(enabled);
+        jbtnImportScripts.setEnabled(enabled);
     }
 
     private void initComponents() {
