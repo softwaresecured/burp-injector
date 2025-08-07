@@ -141,7 +141,7 @@ public class ScriptController  extends AbstractController<ScriptControllerEvent,
             case PYTHON_PATH_UPDATED:
                 getModel().setPythonPath((String)next);
             default:
-                Logger.log("ERROR", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
+                Logger.log("DEBUG", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
         }
     }
 
