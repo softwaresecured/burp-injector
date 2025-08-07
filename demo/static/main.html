@@ -51,10 +51,12 @@ def process_payload( payload: str ) -> str:
             <li>Open BurpSuite and load this page in a browser that is proxied through BurpSuite</li>
             <li><p>Click the "Send" button below to send a test request</p><p><button type="button" class="btn btn-primary" onclick="sendRequest()">Send test request</button></p></li>
             <li>Locate the POST request to <code>/pickledemo</code> in your proxy traffic and right click "Extensions" → Injector → "Send to injector" </li>
-            <li>Click the Injector tab</li>
+            <li>Click the InsertionPoint Injector tab</li>
             <li>Click "New" to create a new rule</li>
+            <li>Provide a name for the rule</li>
             <li>Set the rule scope to: <code>.*pickledemo.*</code></li>
             <li>Set the target area regex to: <code>arg2=(.*)&amp;</code></li>
+            <li>Click the "Enabled" checkbox to enable the rule</li>
             <li>Set the targeting method to auto</li>
             <li>Copy and paste the scripts above into their respective tabs or <a href="static/demo_scripts.py" download="demo_scripts.py">download</a> the scripts and import them by clicking the "Import script" button in the injector extension</li>
             <li>Click the enable checkbox and save the rule. Your configured rule should look like this: <img src="static/configuredrule.png" /></li>
