@@ -144,6 +144,7 @@ public class RulesView extends AbstractView<RulesControllerEvent, RulesModel, Ru
                 if ( getModel().getInjectorRulesTableModel().getRowCount() == 0 ) {
                     getModel().resetRule();
                     getModel().setRuleEditorState(EditorState.INITIAL);
+                    pnlInjectorRuleEditor.setEnabled(false);
                 }
                 break;
             case LAST_ERROR_ALERT_CHANGED:

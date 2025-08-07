@@ -115,8 +115,8 @@ public class RegexTargetsView extends AbstractView<RegexTargetsControllerEvent, 
                     }
                 }
                 else {
-                    pnlRegexTargetEditor.setEnabled(false);
                     getModel().resetTarget();
+                    pnlRegexTargetEditor.setEnabled(false);
                 }
                 break;
             default:
