@@ -200,7 +200,7 @@ public class ScriptView extends AbstractView<ScriptControllerEvent, ScriptModel,
                 updateRegexTargetMethodHighlighting();
                 break;
             default:
-                Logger.log("ERROR", String.format("Unknown targeting method %s",getModel().getRulesModel().getRuleTargetingMethod().name()));
+                Logger.log("DEBUG", String.format("Unknown targeting method %s",getModel().getRulesModel().getRuleTargetingMethod().name()));
         }
     }
 

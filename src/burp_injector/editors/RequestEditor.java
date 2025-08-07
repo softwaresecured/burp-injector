@@ -227,7 +227,7 @@ public class RequestEditor implements ExtensionProvidedHttpRequestEditor, Proper
                 setApplicableRules(getApplicableRules(baseRequest));
                 break;
             default:
-                Logger.log("ERROR", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
+                Logger.log("DEBUG", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
         }
     }
     public void propertyChange(PropertyChangeEvent evt) {

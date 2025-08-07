@@ -120,7 +120,7 @@ public class RegexTargetsView extends AbstractView<RegexTargetsControllerEvent, 
                 }
                 break;
             default:
-                Logger.log("ERROR", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
+                Logger.log("DEBUG", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
         }
     }
 

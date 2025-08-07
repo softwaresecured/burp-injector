@@ -13,6 +13,7 @@ import java.util.concurrent.Callable;
 
 /**
  * The debug config editor is activated by entering the Konami code
+ * This is done by typing the super secret code on the script output jtextarea
  */
 public final class DebugConfig {
     private static DebugEditorDialog debugEditorDialog = new DebugEditorDialog();
