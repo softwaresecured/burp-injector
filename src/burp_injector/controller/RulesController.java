@@ -50,9 +50,15 @@ public class RulesController extends AbstractController<RulesControllerEvent, Ru
                 else {
                     getModel().loadRule(getModel().getLastRuleId());
                 }
+                if ( getModel().getInjectorRules().isEmpty() ) {
+                    getModel().getScriptModel().reset();
+                }
                 break;
             case DELETE:
                 getModel().deleteRule();
+                if ( getModel().getInjectorRules().isEmpty() ) {
+                    getModel().getScriptModel().reset();
+                }
                 break;
             case SAVE:
                 getModel().saveRule();
@@ -109,7 +115,7 @@ public class RulesController extends AbstractController<RulesControllerEvent, Ru
                 getModel().cancelRuleTest();
                 break;
             default:
-                Logger.log("ERROR", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
+                Logger.log("DEBUG", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
         }
     }
 

@@ -144,6 +144,7 @@ public class RulesView extends AbstractView<RulesControllerEvent, RulesModel, Ru
                 if ( getModel().getInjectorRulesTableModel().getRowCount() == 0 ) {
                     getModel().resetRule();
                     getModel().setRuleEditorState(EditorState.INITIAL);
+                    pnlInjectorRuleEditor.setEnabled(false);
                 }
                 break;
             case LAST_ERROR_ALERT_CHANGED:
@@ -174,7 +175,7 @@ public class RulesView extends AbstractView<RulesControllerEvent, RulesModel, Ru
                 jfrmTestRunnerOutput.jProgressBarTestStatus.setValue((Integer)next);
                 break;
             default:
-                Logger.log("ERROR", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
+                Logger.log("DEBUG", String.format("Unknown event %s received by %s", event.name(), this.getClass().getSimpleName()));
         }
     }
 

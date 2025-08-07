@@ -1,5 +1,5 @@
-# 💉 Burp Injector
-Burp Injector is a BurpSuite extension that allows pentesters to define targets within non-standard locations such as encoded
+# 💉 Burp InsertionPoint Injector
+Burp InsertionPoint Injector is a BurpSuite extension that allows pentesters to define targets within non-standard locations such as encoded
 regions or serialized data.
 
 [TL;DR](#TLDR)
@@ -26,7 +26,7 @@ ability to target these locations thus improving scan coverage.
 
 # How it works
 
-Burp Injector registers itself as a scan insertion point provider using the BurpSuite API. The scanner will then present
+Burp InsertionPoint Injector registers itself as a scan insertion point provider using the BurpSuite API. The scanner will then present
 requests to Burp Injector to determine if there are any available insertion points. The extension will then match the
 request with any rules defined by the tester and will provide insertion points to the scanner so that payloads may be
 insertted.
