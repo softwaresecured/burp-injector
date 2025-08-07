@@ -24,7 +24,11 @@ public class PnlInjectorRules extends JPanel {
     }
 
     private void initComponents() {
-        jtblInjectorRules = new JTable(rulesModel.getInjectorRulesTableModel());
+        jtblInjectorRules = new JTable(rulesModel.getInjectorRulesTableModel()) {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            };
+        };
         int[] colWidths = { 0, 80,200 };
         for ( int i = 0; i < colWidths.length; i++ ) {
             jtblInjectorRules.getColumnModel().getColumn(i).setMinWidth(colWidths[i]);

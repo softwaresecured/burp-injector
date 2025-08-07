@@ -169,7 +169,11 @@ public class PnlRegexTargetEditor extends JPanel {
     }
 
     private void initComponents() {
-        jtblTargets = new JTable(regexTargetsModel.getTargetsTableModel());
+        jtblTargets = new JTable(regexTargetsModel.getTargetsTableModel()) {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            };
+        };
         int[] colWidths = { 0, 80 };
         for ( int i = 0; i < colWidths.length; i++ ) {
             jtblTargets.getColumnModel().getColumn(i).setMinWidth(colWidths[i]);
