@@ -52,8 +52,8 @@ extension will provide a name if one isn't provided.
 Regex based targets can be used to target specific areas where 1 single regex isn't ideal.
 
 # Script types
-Some target regions may be encoded, serialized or encryted or signed which means that processing must be done to insert
-payloads. Burp Injector uses python to handle these operations. There are 3 types of scripts you can provide.
+Some target regions may be encoded, serialized or encrypted or signed which means that processing must be done to insert
+payloads. Burp Deep Data Injector uses python to handle these operations. There are 3 types of scripts you can provide.
 
 ## Decode script
 Decodes the target region in which the targets exist. This is called first to "unwrap" the target area.
