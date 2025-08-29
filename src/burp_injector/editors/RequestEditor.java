@@ -137,7 +137,7 @@ public class RequestEditor implements ExtensionProvidedHttpRequestEditor, Proper
 
     @Override
     public String caption() {
-        return "Injector";
+        return "Deep Data Injector";
     }
 
     @Override
