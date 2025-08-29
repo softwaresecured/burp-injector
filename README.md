@@ -1,6 +1,6 @@
-# 💉 Burp InsertionPoint Injector
-Burp InsertionPoint Injector is a BurpSuite extension that allows pentesters to define targets within non-standard locations such as encoded
-regions or serialized data.
+# 💉 Deep Data Injector
+Burp Deep Data Injector is a BurpSuite extension that allows pentesters to define targets within non-standard locations 
+such as encoded regions or serialized data.
 
 [TL;DR](#TLDR)
 
@@ -21,15 +21,15 @@ When base64 decoded, the cookie appears as follows:
 800000~Corporate~-2.0999564538823901E12|800001~Checking~2.00000772712044E12|
 ```
 
-By default, these potential payload insertion points would not be targeted by the scanner. Burp injector provides the
-ability to target these locations thus improving scan coverage.
+By default, these potential payload insertion points would not be targeted by the scanner. Burp Deep Data Injector 
+provides the ability to target these locations thus improving scan coverage.
 
 # How it works
 
-Burp InsertionPoint Injector registers itself as a scan insertion point provider using the BurpSuite API. The scanner will then present
-requests to Burp Injector to determine if there are any available insertion points. The extension will then match the
-request with any rules defined by the tester and will provide insertion points to the scanner so that payloads may be
-insertted.
+Burp Deep Data Injector registers itself as a scan insertion point provider using the BurpSuite API. The scanner will 
+then present requests to Burp Deep Data Injector to determine if there are any available insertion points. The extension 
+will then match the request with any rules defined by the tester and will provide insertion points to the scanner so 
+that payloads may be inserted.
 
 ### High level work flow
 - Create injection rule targeting a previously un-scannable region
@@ -95,8 +95,8 @@ By calling the decode script above, the following is revealed
 3. Login with username `admin` and password `admin`
 4. Switch back to the proxy and locate a request to `/bank/main.jsp`, it will have an `AltoroAccounts` cookie which is
 a base64 encoded value
-5. Right-click on the request and click Extensions → Injector → Send to injector
-6. Click the Injector tab
+5. Right-click on the request and click Extensions → Injector → Send to Deep Data Injector
+6. Click the Deep Data Injector tab
 7. Click "New" to create a new rule
 8. Provide a name and set the rule scope regex to `.*/bank/main.jsp.*`
 9. Set the target area regex to `AltoroAccounts="([^"]+)"` and set the capture group to 1
@@ -127,8 +127,7 @@ def encode_target( target: str ) -> str:
 ^\d+~.*?~.*?~.*?~(.*?)\|
 ```
 17. Click "Save"
-18. Run a full scan or run a scan with 1 bcheck enabled that sends 1 payload to observe that the targeted region is
-scanned
+18. Run a scan to observe that the targeted region is scanned
 
 ### Test your newly created rule
 1. Enter a test payload such as `<script>alert(1)</script>` in the test payload field on the "Python script debug" frame
@@ -137,7 +136,7 @@ scanned
 
 ### Test a request interactively
 1. Select any request to `/bank/main.jsp` and send it to the repeater
-2. Observe that there is an "Injector" editor and that when clicking on it the decoded request is revealed
+2. Observe that there is a "Deep Data Injector" editor and that when clicking on it the decoded request is revealed
 3. Edit the request and click send.
 
 
@@ -151,7 +150,7 @@ scanned
 - Test the rule using the rule test feature to work out any issues prior to scanning
 - If the decoded target area ends up being a format such as key value pairs, CSV, JSON or XML then use auto targeting
 - Consider developing the bulk of your decode and encode scripts in an IDE and only make minor changes in the script
-editor tab since it lacs debugging features that an IDE would have. You can export your scripts by clicking 
+editor tab since it lacks debugging features that an IDE would have. You can export your scripts by clicking 
 "Export scripts" and then you can import them after by clicking "Import scripts"
 - The execution time of scripts is shown so you can be mindful of how long your script takes.
 - Be mindful of the payload encoding and use a payload processing script to encode when required ( ex: json, xml ) 

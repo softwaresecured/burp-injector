@@ -167,7 +167,7 @@ public class RulesController extends AbstractController<RulesControllerEvent, Ru
         List<Component> menuItemList = new ArrayList<>();
         if (event.isFromTool(ToolType.PROXY, ToolType.TARGET, ToolType.LOGGER, ToolType.REPEATER)) {
             if ( event.selectedRequestResponses().size() == 1 || event.messageEditorRequestResponse().isPresent() ) {
-                JMenuItem mnuSendToInjector = new JMenuItem("Send to Injector");
+                JMenuItem mnuSendToInjector = new JMenuItem("Send to Deep Data Injector");
                 mnuSendToInjector.addActionListener(actionEvent -> {
                     HttpRequestResponse requestResponse = null;
                     if ( event.messageEditorRequestResponse().isPresent() ) {
