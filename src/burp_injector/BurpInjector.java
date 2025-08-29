@@ -26,7 +26,7 @@ import burp_injector.view.*;
 
 
 public class BurpInjector implements BurpExtension, ExtensionUnloadingHandler, HttpRequestEditorProvider {
-    public static final String EXTENSION_NAME = "InsertionPoint Injector";
+    public static final String EXTENSION_NAME = "Deep Data Injector";
     private MontoyaApi api;
     private InjectorConfigTab tab;
     private MVC<RulesModel, RulesView, RulesController> rules;

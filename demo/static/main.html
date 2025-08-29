@@ -10,7 +10,7 @@
         <p>
             This application sends a python serialized object via a POST request. The object contains a parameter called <code>param7</code> which is vulnerable to command injection.
         </p>
-        <p>The following scripts can be used within the Injector plugin to decode and endcode the payload</p>
+        <p>The following scripts can be used within the Deep Data Injector plugin to decode and endcode the payload</p>
         <h3>Decode script</h3>
 <pre>
 # decoder script used to decode a region of text from a targeting rule
@@ -50,8 +50,8 @@ def process_payload( payload: str ) -> str:
         <ol>
             <li>Open BurpSuite and load this page in a browser that is proxied through BurpSuite</li>
             <li><p>Click the "Send" button below to send a test request</p><p><button type="button" class="btn btn-primary" onclick="sendRequest()">Send test request</button></p></li>
-            <li>Locate the POST request to <code>/pickledemo</code> in your proxy traffic and right click "Extensions" → Injector → "Send to injector" </li>
-            <li>Click the InsertionPoint Injector tab</li>
+            <li>Locate the POST request to <code>/pickledemo</code> in your proxy traffic and right click "Extensions" → Deep Data Injector → "Send to Deep Data Injector" </li>
+            <li>Click the Deep Data Injector tab</li>
             <li>Click "New" to create a new rule</li>
             <li>Provide a name for the rule</li>
             <li>Set the rule scope to: <code>.*pickledemo.*</code></li>
