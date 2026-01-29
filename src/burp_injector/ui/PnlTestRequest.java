@@ -18,6 +18,7 @@ public class PnlTestRequest extends JPanel {
         testRequest.setTabSize(1);
         testRequest.setLineWrap(true);
         testRequest.setLineWrap(true);
+        testRequest.setEditable(false);
     }
 
     private void initLayout() {
